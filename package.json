@@ -10,14 +10,43 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:editor.printReferences"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
-			"command": "extension.helloWorld",
-			"title": "Hello World"
-		}]
+		"commands": [
+			{
+				"command": "editor.printReferences",
+				"title": "Show All References"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "editor.printReferences",
+					"when": "editorHasReferenceProvider",
+					"group": "navigation@1.31"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "locations",
+				"aliases": [
+					"Locations"
+				],
+				"extensions": [
+					".locations"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "locations",
+				"path": "./locations-syntax.json",
+				"scopeName": "source.locations"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
