@@ -10,17 +10,23 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
+
+	const providerRegistrations = vscode.Disposable.from(
+		vscode.workspace.registerTextDocumentContentProvider(ContentProvider.scheme, provider),
+	);
+
 	const commandRegistration = vscode.commands.registerTextEditorCommand('editor.printReferences', editor => {
 		let select: string;
 		select = editor.document.getText(editor.document.getWordRangeAtPosition(editor.selection.active));
-		if (select){
+		if ((select) && (editor.document.getText().length !== select.length)) {
 			const uri = encodeLocation(editor.document.uri, editor.selection.active, select);
-			return vscode.workspace.openTextDocument().then(doc => vscode.window.showTextDocument(doc, editor.viewColumn! + 1));
+			return vscode.workspace.openTextDocument(uri).then(doc => vscode.window.showTextDocument(doc, editor.viewColumn! + 1));
 		}
 		return null;
 	});
 
 	context.subscriptions.push(
+		providerRegistrations,
 		commandRegistration,
 		provider);
 }
