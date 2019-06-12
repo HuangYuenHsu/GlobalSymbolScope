@@ -13,7 +13,7 @@ export enum scopemode {
 };
 export default class Provider implements vscode.TextDocumentContentProvider {
 
-  static scheme = 'references';
+  static scheme = 'symbolscope';
   constructor() {
 
     // Listen to the `closeTextDocument`-event which means we must
@@ -88,7 +88,7 @@ export default class Provider implements vscode.TextDocumentContentProvider {
       const [path, line, desc] = this.parseScopeInformation(scope[dIdx]);
       if ((path !== "") && (line !== "") && (desc !== "")) {
         if (CurrentPath.match(path)) {
-          parse += '\t\t';
+          parse += '\t\t  ';
           parse += line;
           parse += ':  ';
           parse += desc;
@@ -96,9 +96,10 @@ export default class Provider implements vscode.TextDocumentContentProvider {
         }
         else {
           CurrentPath = path;
+          parse += 'file:';
           parse += path;
           parse += ':\n';
-          parse += '\t\t';
+          parse += '\t\t  ';
           parse += line;
           parse += ':  ';
           parse += desc;
@@ -116,7 +117,7 @@ let seq = 0;
 export function encodeLocation(uri: vscode.Uri, pos: vscode.Position,
   symbol: string, Mode: scopemode): vscode.Uri {
   const query = JSON.stringify([uri.toString(), pos.line, pos.character, symbol, Mode]);
-  return vscode.Uri.parse(`${Provider.scheme}:References.locations?${query}#${seq++}`);
+  return vscode.Uri.parse(`${Provider.scheme}:lookup.symbolscope?${query}#${seq++}`);
 }
 
 function decodeLocation(uri: vscode.Uri):

@@ -32,20 +32,20 @@
 		],
 		"languages": [
 			{
-				"id": "locations",
+				"id": "symbolscope",
 				"aliases": [
-					"Locations"
+					"symbolscope"
 				],
 				"extensions": [
-					".locations"
+					".symbolscope"
 				]
 			}
 		],
 		"grammars": [
 			{
-				"language": "locations",
+				"language": "symbolscope",
 				"path": "./locations-syntax.json",
-				"scopeName": "source.locations"
+				"scopeName": "source.symbolscope"
 			}
 		]
 	},

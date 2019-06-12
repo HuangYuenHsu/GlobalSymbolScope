@@ -1,9 +1,9 @@
 {
-  "name": "Locations",
-  "scopeName": "source.locations",
+  "name": "symbolscope",
+  "scopeName": "source.symbolscope",
   "patterns": [
     {
-      "name": "comment.line.file",
+      "name": "keyword.control.locations",
       "match": "file:.*$"
     },
     {
