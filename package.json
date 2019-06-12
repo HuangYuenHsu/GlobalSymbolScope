@@ -10,14 +10,24 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:editor.printReferences"
+		"onCommand:editor.LookupSymbol",
+		"onCommand:editor.LookupGlobalDef",
+		"onCommand:editor.FindText"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "editor.printReferences",
-				"title": "Show All References"
+				"command": "editor.LookupSymbol",
+				"title": "Look up Symbol"
+			},
+			{
+				"command": "editor.LookupGlobalDef",
+				"title": "Look up Global Definition"
+			},
+			{
+				"command": "editor.FindText",
+				"title": "Find Text String"
 			}
 		],
 		"languages": [
