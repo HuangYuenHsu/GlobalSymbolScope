@@ -9,7 +9,7 @@ import { execSync } from 'child_process';
 export enum scopemode {
   FIND_SYMBOL = 0,
   FIND_GLOBAL_DEFINITION = 1,
-  FIND_THID_TEXT_STRING = 4,
+  FIND_TEXT_STRING = 4,
 };
 export default class Provider implements vscode.TextDocumentContentProvider {
 
@@ -74,8 +74,8 @@ export default class Provider implements vscode.TextDocumentContentProvider {
         parse += symbol;
         parse += ')\n\n\n';
         break;
-      case scopemode.FIND_THID_TEXT_STRING:
-        parse += '------------>Find Thid Text String(';
+      case scopemode.FIND_TEXT_STRING:
+        parse += '------------>Find Text String(';
         parse += symbol;
         parse += ')\n\n\n';
         break;

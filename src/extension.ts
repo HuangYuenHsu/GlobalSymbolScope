@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
 			select = editor.document.getText(editor.selection);
 			if (select) {
 				const uri = encodeLocation(editor.document.uri, editor.selection.active,
-					select, scopemode.FIND_THID_TEXT_STRING);
+					select, scopemode.FIND_TEXT_STRING);
 				return vscode.workspace.openTextDocument(uri).then(
 					doc => vscode.window.showTextDocument(doc, editor.viewColumn! + 1));
 			}
