@@ -8,11 +8,11 @@ This extension is for gtags-cscope funciton, and list all symbol to a new page.
 
 - Run gtags -v on your project folder, and tnen run global -vu when you need update your symbol table
 - Look up Symbol
-![!image](images/lookupsymbol.gif)
+![!image](https://github.com/ianhsutw/GlobalSymbolScope/tree/master/images/lookupsymbol.gif)
 - Look up Global Definition
-![!image](images/lookupglobaldefinition.gif)
+![!image](https://github.com/ianhsutw/GlobalSymbolScope/tree/master/images/lookupglobaldefinition.gif)
 - Find match string
-![!image](images/findtextstring.gif)
+![!image](https://github.com/ianhsutw/GlobalSymbolScope/tree/master/images/findtextstring.gif)
 
 ## Requirements
 
